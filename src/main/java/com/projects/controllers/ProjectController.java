@@ -1,0 +1,68 @@
+package com.projects.controllers;
+
+import com.projects.repositories.ProjectRepository;
+import com.projects.services.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class ProjectController {
+    private final ProjectService projectService;
+
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
+    @GetMapping
+    public ResponseEntity getProjects(@RequestParam(name = "page", defaultValue = "0") final Integer pageNumber,
+                                      @RequestParam(name = "size", defaultValue = "10") final Integer pageSize){
+        return ResponseEntity.ok(projectService.getProjects(pageNumber, pageSize));
+    }
+
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    @GetMapping("/all")
+    public Iterable<com.projects.entities.Project> findAll() {
+        return projectRepository.findAll();
+    }
+//
+//    @GetMapping("/title/{ProjectTitle}")
+//    public List<Project> findByTitle(@PathVariable String ProjectTitle) {
+//        return projectRepository.findByTitle(ProjectTitle);
+//    }
+//
+//    @GetMapping("/{id}")
+//    public Project findOne(@PathVariable long id) {
+//        return projectRepository.findById(id)
+//                .orElseThrow(ProjectNotFoundException::new);
+//    }
+
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Project create(@RequestBody Project Project) {
+//        Project Project1 = projectRepository.save(Project);
+//        return Project1;
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void delete(@PathVariable long id) {
+//        projectRepository.findById(id)
+//                .orElseThrow(ProjectNotFoundException::new);
+//        projectRepository.deleteById(id);
+//    }
+//
+//    @PutMapping("/{id}")
+//    public Project updateProject(@RequestBody Project Project, @PathVariable long id) {
+//        if (Project.getId() != id) {
+//            throw new ProjectIdMismatchException();
+//        }
+//        projectRepository.findById(id)
+//                .orElseThrow(ProjectNotFoundException::new);
+//        return projectRepository.save(Project);
+//    }
+}

@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: projects-server
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+    properties:
+      hibernate:
+       jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/projects
+    username: roconstantin
+    password: roconstantin
+    hikari:
+      maximum-pool-size: 4
+server:
+  port: 8081
+  servlet:
+    context-path: /V1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
