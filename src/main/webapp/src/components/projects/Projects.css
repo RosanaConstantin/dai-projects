@@ -1,0 +1,21 @@
+.App-intro{
+    color: black;
+}
+
+.table {
+    padding:50px;
+    margin:10%;
+    border:1px solid black;
+}
+.coloana{
+    padding:20px;
+    border: 1px solid black;
+}
+.cap{
+    padding:20px;
+    border: 1px solid black;
+}
+
+.view{
+    margin-left:10%;
+}

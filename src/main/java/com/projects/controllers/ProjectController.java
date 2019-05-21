@@ -1,12 +1,15 @@
 package com.projects.controllers;
 
+import com.projects.entities.Project;
 import com.projects.repositories.ProjectRepository;
+import com.projects.services.CordisService;
 import com.projects.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.Optional;
 
 
 @RestController
@@ -17,18 +20,34 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @GetMapping
+    @RequestMapping(value = "/projects", headers = "Access-Control-Allow-Origin=*", method = RequestMethod.GET)
     public ResponseEntity getProjects(@RequestParam(name = "page", defaultValue = "0") final Integer pageNumber,
                                       @RequestParam(name = "size", defaultValue = "10") final Integer pageSize){
+
         return ResponseEntity.ok(projectService.getProjects(pageNumber, pageSize));
     }
 
     @Autowired
     private ProjectRepository projectRepository;
 
+    @CrossOrigin
     @GetMapping("/all")
     public Iterable<com.projects.entities.Project> findAll() {
         return projectRepository.findAll();
+    }
+
+    @CrossOrigin
+    @GetMapping("/project/{id}")
+    public Optional<Project> findById(@PathVariable Long id) {
+        return projectRepository.findById(id);
+    }
+
+    @CrossOrigin
+    @GetMapping("/update")
+    public void update() throws IOException {
+        CordisService.download();
+        CordisService.unzip();
+        return;
     }
 //
 //    @GetMapping("/title/{ProjectTitle}")

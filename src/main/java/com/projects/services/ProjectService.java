@@ -21,7 +21,6 @@ public class ProjectService {
     }
 
     public List<ProjectModel> getProjects(final Integer pageNumber, final Integer pageSize) {
-    //    CordisService.getProjects();
         final Pageable pageable = PageRequest.of(pageNumber, pageSize, new Sort(Sort.Direction.ASC, "acronym"));
         return projectRepository.findAll(pageable).stream()
                 .map(ProjectMapper::toModel)

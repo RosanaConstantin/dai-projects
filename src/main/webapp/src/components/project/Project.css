@@ -1,0 +1,13 @@
+.detailsRow{
+    display: flex;
+    flex-direction:row;
+
+}
+
+.detailsP{
+    padding:5px;
+ }
+
+ .details {
+ margin-left:10%;
+ }

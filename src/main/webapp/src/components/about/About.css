@@ -1,0 +1,20 @@
+
+.container2{
+width:40%;
+height:40%;
+margin:auto;
+background: #E8E8E8;
+margin-top:100px;
+}
+.logo {
+  height: 5vmin;
+  margin-left: 0px;
+  width:14vmin;
+  margin-bottom: 0px;
+
+}
+
+
+#title {
+    margin-left:10%;
+}

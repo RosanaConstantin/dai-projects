@@ -7,6 +7,8 @@ import { RoutedTabs, NavTab } from "react-router-tabs";
 import Home from "./home/Home";
 import Projects from "./projects/Projects";
 import About from "./about/About";
+import Project from "./project/Project";
+import Update from "./update/Update";
 
 class App extends Component {
   render() {
@@ -20,13 +22,15 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
 
             <p id="title">
-            Your portal to European Projects
+            Portal pentru proiectele europene
             </p>
 
          <div className ="tabs">
-           <Link className ="link" to="/home">Home</Link>
-           <Link className ="link" to="/projects">Projects</Link>
-           <Link className ="link" to="/about">About</Link>
+           <Link className ="link" to="/home">Acasa</Link>
+           <Link className ="link" to="/projects">Proiecte</Link>
+
+           <Link className ="link" to="/update">Actualizare</Link>
+            <Link className ="link" to="/about">Despre</Link>
 
 
          </div>
@@ -36,6 +40,8 @@ class App extends Component {
                        <Route path="/home" component={Home} />
                        <Route path="/projects" component={Projects} />
                        <Route path="/about" component={About} />
+                       <Route path="/project" component={Project} />
+                       <Route path="/update" component={Update} />
                      </Switch>
       </div>
       </BrowserRouter>
