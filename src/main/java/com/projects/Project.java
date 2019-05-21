@@ -1,6 +1,6 @@
 package com.projects;
 
-import com.projects.services.CordisService;
+import com.projects.services.Parser.Parser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration;

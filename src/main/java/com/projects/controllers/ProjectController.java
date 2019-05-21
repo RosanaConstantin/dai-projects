@@ -3,6 +3,7 @@ package com.projects.controllers;
 import com.projects.entities.Project;
 import com.projects.repositories.ProjectRepository;
 import com.projects.services.CordisService;
+import com.projects.services.Parser.Parser;
 import com.projects.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,7 @@ public class ProjectController {
     public void update() throws IOException {
         CordisService.download();
         CordisService.unzip();
+        Parser.parseDoc("/Users/roconstantin/Documents/university/Semestrul II/DAI/dai-homework/src/main/resources/tmp/search-result-metadata.xml", true);
         return;
     }
 //
